@@ -1,0 +1,70 @@
+
+QToolButton, QToolButton:pressed,
+QToolButton:pressed:focus,QToolButton:pressed:hover {
+  background-color: white;
+  border: 1px solid #ffffff;
+  color: #111111;
+  padding: 3px 20px;
+  border-top: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+QToolButton:focus {
+  border: 1px solid #ffffff;
+  background-color: #cccccc;
+}
+
+QToolButton:hover {
+  background-color: #f0f0f0;
+  border-color: #ffffff;
+}
+
+QToolButton:hover:focus {
+  background-color: #dcedf5;
+  border-color: #7ea8cc;
+}
+
+QToolButton:focus {
+  border-color: #7ea8cc;
+}
+
+
+
+QMenu {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+QMenu::item {
+  border: 0px solid transparent;
+  color: #111111;
+  padding: 5px 16px;
+  padding-left: 25px;
+  border-radius: 2px;
+}
+
+QMenu::item:selected {
+  background: #ffffff;
+  border: 0px solid #ffffff;
+}
+
+QMenu::item:disabled {
+  border: 0px solid transparent;
+  background: transparent;
+}
+QMenu::item:pressed {
+  border: 0px solid #ffffff;
+  background-color: #dddddd;
+}
+
+QMenu::separator {
+  background: #ffffff;
+  height: 1px;
+}
+
+QMenu::indicator {
+  padding-top: 2px;
+  height: 25px;
+  width: 25px;
+}

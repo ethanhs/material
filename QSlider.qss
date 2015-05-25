@@ -1,0 +1,67 @@
+QSlider::groove:horizontal {
+    border: 0px solid transparent;
+    height: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: #eeeeee;
+    margin: 2px 0;
+}
+
+QSlider::handle:horizontal {
+    background-color: #8e24aa;
+    height: 10px;
+    width: 12px;
+    border: 0px solid transparent;
+    margin: -2px 0;
+    border-radius: 6px;
+}
+
+QSlider::handle:horizontal:pressed {
+    background-color: #8e24aa;
+    height: 10px;
+    width: 18px;
+    border: 0px solid transparent;
+    margin: -5px 0px;
+    border-radius: 9px;
+}
+
+QSlider::handle:horizontal:disabled {
+    background-color: #bbbbbb;
+    height: 2px;
+    width: 8px;
+    border: 0px solid transparent;
+    margin: -1px -1px;
+    border-radius: 4px;
+}
+
+QSlider::groove:vertical {
+    border: 0px solid transparent;
+    width: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: #eeeeee;
+    margin: 2px 0;
+}
+
+QSlider::handle:vertical {
+    background-color: #8e24aa;
+    height: 12px;
+    width: 6px;
+    border: 0px solid transparent;
+    margin: 0 -2px;
+    border-radius: 6px;
+}
+
+QSlider::handle:vertical:pressed {
+    background-color: #8e24aa;
+    height: 18px;
+    width: 6px;
+    border: 0px solid transparent;
+    margin: 0 -5px;
+    border-radius: 9px;
+}
+
+QSlider::handle:vertical:disabled {
+    background-color: #bbbbbb;
+    height: 8px;
+    width: 2px;
+    border: 0px solid transparent;
+    margin: -1px -1px;
+    border-radius: 4px;
+}

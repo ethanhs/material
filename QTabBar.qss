@@ -1,0 +1,29 @@
+
+QTabBar::tab {
+  color: #111111;
+  background-color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 0;
+  border: 0px solid transparent;
+  border-right: 0;
+}
+
+
+QTabBar::tab:hover {
+  background-color: #dddddd;
+}
+
+QTabBar::tab:disabled {
+  color: #bbbbbb;
+}
+
+QTabBar::tab:selected {
+  color: #111111;
+  background-color: #fdfdfd;
+  border-bottom: 2px solid #4caf50;
+}
+
+QTabBar:close-button {
+    /*workaround to avoid close button. Do !not! add this image!*/
+    image: url(:/closebutton.png);
+}

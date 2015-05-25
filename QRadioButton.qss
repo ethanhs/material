@@ -1,0 +1,35 @@
+/* See http://www.google.com/design/spec/components/selection-controls.html# */
+QRadioButton::indicator::unchecked, QCheckButton::indicator::unchecked {
+    image: url(:/QRadioButton/radio_normal.svg);
+}
+
+QRadioButton::indicator:unchecked:hover, QCheckButton::indicator:unchecked:hover {
+    image: url(:/QRadioButton/radio_normal.svg);
+}
+
+QRadioButton::indicator:unchecked:pressed, QCheckButton::indicator:unchecked:pressed {
+    image: url(:/QRadioButton/radio_checked.svg);
+}
+
+QRadioButton::indicator:checked, QCheckButton::indicator:checked {
+    image: url(:/QRadioButton/radio_checked.svg);
+}
+
+QRadioButton::indicator:checked:hover, QCheckButton::indicator:checked:hover {
+    image: url(:/QRadioButton/radio_checked.svg);
+}
+
+QRadioButton::indicator:checked:pressed, QCheckButton::indicator:checked:pressed {
+    image: url(:/QRadioButton/radio_checked.svg);
+}
+QRadioButton::indicator:disabled, QCheckButton::indicator:disabled {
+    image: url(:/QRadioButton/radio_disabled.svg);
+}
+QRadioButton::indicator:unchecked:focus, QCheckButton::indicator:unchecked:focus {
+    image: url(:/QRadioButton/radio_normal.svg);
+	background-color: #dddddd;
+}
+QRadioButton::indicator:checked:focus, QCheckButton::indicator:checked:focus {
+    image: url(:/QRadioButton/radio_checked.svg);
+	background-color: #dddddd;
+}

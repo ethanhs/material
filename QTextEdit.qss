@@ -1,0 +1,31 @@
+QTextEdit {
+    border: 0px solid white;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #dddddd;
+    color: #dddddd;
+}
+
+QTextEdit:disabled{
+    border: 0px solid white;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #eeeeee;
+}
+
+QTextEdit:focus{
+    border: 0px solid white;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #00695c;
+    color: #111111;
+}
+QTextEdit:selected {
+    border: 0px solid white;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #00695c;
+    color: #111111;
+}
+QTextEdit[error=true] {
+    border: 0px solid white;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #ff1744;
+    color: #111111;
+}
