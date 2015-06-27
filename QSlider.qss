@@ -1,6 +1,6 @@
 QSlider::groove:horizontal {
     border: 0px solid transparent;
-    height: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    height: 8px;
     background: #eeeeee;
     margin: 2px 0;
 }
@@ -34,7 +34,7 @@ QSlider::handle:horizontal:disabled {
 
 QSlider::groove:vertical {
     border: 0px solid transparent;
-    width: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    width: 8px;
     background: #eeeeee;
     margin: 2px 0;
 }

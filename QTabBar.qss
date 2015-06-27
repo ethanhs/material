@@ -1,11 +1,9 @@
-
 QTabBar::tab {
   color: #111111;
   background-color: #ffffff;
-  padding: 6px 16px;
-  border-radius: 0;
-  border: 0px solid transparent;
-  border-right: 0;
+  padding: 7px 16px;
+  border-right: 6px solid #ffffff;
+  border-left:  6px solid #ffffff;
 }
 
 
@@ -20,7 +18,7 @@ QTabBar::tab:disabled {
 QTabBar::tab:selected {
   color: #111111;
   background-color: #fdfdfd;
-  border-bottom: 2px solid #4caf50;
+  border-bottom: 4px solid %s;
 }
 
 QTabBar:close-button {
