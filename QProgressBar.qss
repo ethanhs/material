@@ -1,5 +1,5 @@
 QProgressBar {
-    border: 0px solid transparent;
+    border: none;
     background-color: #81d4fa;
     height: 3px;
     font-size: 2px;

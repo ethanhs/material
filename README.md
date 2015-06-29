@@ -3,7 +3,7 @@ A collection of PyQt Widgets for theming applications to give a material design 
 
 Currently, only PyQt4 and Python2 are supported, Py3 and PyQt5 support is on the way!
 
-This is a repository for Material Design qt stylesheets. Currently, the following widgets are supported (not all implemented right now):
+This is a repository for Material Design qt stylesheets and widgets. Currently, the following widgets are supported (not all implemented right now):
 
 - QSlider - implemented
 - QLineEdit - not implemented
@@ -11,7 +11,7 @@ This is a repository for Material Design qt stylesheets. Currently, the followin
 - QPushButton - FAB, Raised and Flat
 - QTabBar - implemented (WIP)
 - QListView - not implemented
-- QProgressBar - not implemented
+- QProgressBar - partially implemented
 - QRadioButton (as a QCheckBox) - implemented, acts as a checkbox
 
 QPushButton has 3 styles: Flat, Raised, and Floating Action. To read more on these styles [read the button spec](http://www.google.com/design/spec/components/buttons.html).

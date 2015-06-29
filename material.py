@@ -51,7 +51,7 @@ class RaisedButton(QPushButton):
         self.color=color
         self.setText(text)
         self.effect=QGraphicsDropShadowEffect(self.parent())
-        self.effect.setOffset(2)
+        self.effect.setOffset(3)
         self.effect.setColor(QColor(0,0,0,40))
         self.setGraphicsEffect(self.effect)
         self.press=False
@@ -201,6 +201,35 @@ class CheckBox(QCheckBox):
             else:
                 self.setChecked(True)
             self.repaint()
+class ProgressBar(QProgressBar):
+    def __init__(self,*args):
+        QProgressBar.__init__(self,*args)
+        colorful=False
+        if type(args[0])==type(bool):
+            coloful=True
+        if not colorful:
+            with open("QProgressBar.qss") as f:
+                self.setStyleSheet(f.read())
+
+#With thanks to Chris Wheatley and his Hamburger Concept
+class Hamburger(QPushButton):
+    def __init__(self,color,parent=None):
+        QPushButton.__init__(self,parent)
+        if not color:
+            self.color=QColor(255,255,255)
+        else:
+            self.color=color
+        self.press=False
+        def paintEvent(self, event):
+            painter=QPainter()
+            painter.begin(self)
+            painter.setRenderHint(QPainter.HighQualityAntialiasing)
+            painter.setRenderHint(QPainter.SmoothPixmapTransform)
+            if self.press:
+                pass
+            else:
+                #TODO
+
 class Window(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -230,6 +259,12 @@ class Window(QMainWindow):
         self.slide2.setOrientation(Qt.Horizontal)
         self.check=CheckBox(self)
         self.check.move(300,450)
+        self.progbar=ProgressBar(self)
+        self.progbar.move(300,500)
+        self.progbar.resize(150,10)
+        self.progbar.setValue(30)
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
