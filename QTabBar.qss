@@ -1,24 +1,32 @@
 QTabBar::tab {
-  color: #111111;
-  background-color: #ffffff;
+  color: [color];
   padding: 7px 16px;
-  border-right: 6px solid #ffffff;
-  border-left:  6px solid #ffffff;
+  background-color: [background];
+  border-right: 6px solid [background];
+  border-left:  6px solid [background];
 }
 
 
 QTabBar::tab:hover {
-  background-color: #dddddd;
+  background-color: [hover];
+  border-right: [hover];
+  border-left: [hover];
+  color: [color];
 }
 
 QTabBar::tab:disabled {
-  color: #bbbbbb;
+  background-color: #bbbbbb;
+  border-right: #bbbbbb;
+  border-left: #bbbbbb;
+  color: [color];
 }
 
 QTabBar::tab:selected {
-  color: #111111;
-  background-color: #fdfdfd;
-  border-bottom: 4px solid %s;
+  color: [color];
+  border-bottom: 4px solid [bottom];
+  background-color: [background];
+  border-right: 6px solid [background];
+  border-left:  6px solid [background];
 }
 
 QTabBar:close-button {

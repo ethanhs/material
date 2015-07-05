@@ -1,36 +1,37 @@
 QLineEdit, QLineEdit:hover {
-    border: 0px solid white;
-    padding-bottom: 5px;
+    border: none;
+    padding-bottom: 2px;
     border-bottom: 1px solid #dddddd;
     color: #dddddd;
 }
 
 QLineEdit:editable{
-    border: 0px solid white;
-    padding-bottom: 5px;
-    border-bottom: 3px solid #b2dfdb
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #b2dfdb;
+    font-size: 20px;
 }
 
 QLineEdit:disabled{
     border: 0px solid white;
-    padding-bottom: 5px;
-    border-bottom: 3px solid #eeeeee;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #eeeeee;
 }
 
 QLineEdit:focus{
     border: 0px solid white;
-    padding-bottom: 5px;
-    border-bottom: 3px solid #00695c;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
     color: #111111;
 }
 QLineEdit:pressed {
-    border: 0px solid white;
-    padding-bottom: 5px;
-    border-bottom: 3px solid #00695c;
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00695c;
 }
 QLineEdit[error=true] {
-    border: 0px solid white;
-    padding-bottom: 5px;
-    border-bottom: 3px solid #ff1744;
+    border: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #ff1744;
     color: #111111;
 }
