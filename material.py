@@ -263,6 +263,7 @@ class CheckBox(QCheckBox):
         self.resize(30, 30)
         paint = QPainter(self.check)
         self.svgrenderer.render(paint)
+        paint.end()
 
     def paintEvent(self, event):
         painter = QPainter()
@@ -273,7 +274,7 @@ class CheckBox(QCheckBox):
         self.img = QPixmap()
         if self.isChecked():
             painter.setBrush(self.color1)
-            painter.drawRect(QRect(0, 0, 30, 30))
+            painter.drawRect(QRect(-1, -1, 31, 31))
             painter.drawPixmap(QRect(-2, -5, 35, 40), self.img.fromImage(self.check))
         else:
             pen = QPen()
@@ -287,7 +288,6 @@ class CheckBox(QCheckBox):
         painter.end()
 
     def mouseReleaseEvent(self, event):
-        print event.button()
         if event.button() == Qt.LeftButton:
             if self.isChecked():
 
@@ -306,10 +306,12 @@ class ProgressBar(QProgressBar):
 
 # With thanks to Chris Wheatley and his Hamburger Concept
 class Hamburger(QPushButton):
-    """Not imlemented"""
-    def __init__(self, color, parent=None):
+    def __init__(self, parent=None):
         QPushButton.__init__(self, parent)
-        self.setIcon(QIcon())
+        self.svgrenderer=QSvgRenderer("")
+        paint = QPainter(self.check)
+        self.svgrenderer.render(paint)
+        paint.end()
 
 class LineEdit(QLineEdit):
     def __init__(self,color,parent=None):
