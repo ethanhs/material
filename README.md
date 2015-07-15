@@ -16,7 +16,9 @@ This is a repository for Material Design qt stylesheets and widgets. Currently, 
 
 QPushButton has 3 styles: Flat, Raised, and Floating Action. To read more on these styles [read the button spec](http://www.google.com/design/spec/components/buttons.html).
 
-This is still very much a work in progress. To see the example, run the `material.py` file. It will give you an example application. (Still very much a work in progress).
+This is still very much a work in progress. To see the example, run the `example.py` file. It will give you an example application. (Still very much a work in progress).
+
+
 
 #Contributing
 
