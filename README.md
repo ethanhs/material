@@ -6,7 +6,7 @@ Currently, only PySide (and probably PyQt4) and Python2 are supported.
 This is a repository for Material Design qt stylesheets and widgets. Currently, the following widgets are supported (not all implemented right now):
 
 - QSlider - implemented
-- QLineEdit - not implemented
+- QLineEdit - implemented
 - QTextEdit - not implemented
 - QPushButton - FAB, Raised and Flat
 - QTabBar - implemented

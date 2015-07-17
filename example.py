@@ -13,9 +13,7 @@ class Example_App(QMainWindow):
         QMainWindow.__init__(self)
         self.setStyleSheet("background-color: #ffffff")
         self.setWindowTitle("Material Design Example")
-        self.backgroundwidget = QWidget(self)
-        self.backgroundwidget.setStyleSheet("background-color:rgb(0,255,255,0)")
-        self.backgroundwidget.resize(200, 200)
+        self.topbar = TopBar("#bbbbbb", 50, self)
         self.button = FloatingActionButton(parent=self)
         self.button.move(100, 100)
         self.switch = Switch(QColor(50, 50, 255), 30, self)
@@ -45,9 +43,11 @@ class Example_App(QMainWindow):
         self.progbar.move(300, 500)
         self.progbar.resize(150, 10)
         self.progbar.setValue(30)
-        self.line=LineEdit("#29b6f6",self)
+        self.line=LineEdit(self)
         self.line.move(400,200)
         self.line.resize(150,50)
+        self.line.wrong()
+
 
 
 if __name__ == '__main__':

@@ -304,20 +304,22 @@ class ProgressBar(QProgressBar):
             self.setStyleSheet(f.read())
 
 
-# With thanks to Chris Wheatley and his Hamburger Concept
 class Hamburger(QPushButton):
     def __init__(self, parent=None):
         QPushButton.__init__(self, parent)
-        self.svgrenderer=QSvgRenderer("")
+        self.svgrenderer=QSvgRenderer("icons/hamburger.svg")
         paint = QPainter(self.check)
         self.svgrenderer.render(paint)
         paint.end()
 
 class LineEdit(QLineEdit):
-    def __init__(self,color,parent=None):
+    def __init__(self,parent=None):
         QLineEdit.__init__(self,parent)
         with open("QLineEdit.qss") as f:
             self.setStyleSheet(f.read())
+
+    def wrong(self):
+        self.setStyleSheet("QLineEdit{border: none;padding-bottom: 2px;border-bottom: 2px solid #ff1744;color: #111111;font-size: 20px;}")
 class Page(QWidget):
     def __init__(self,parent=None):
         QWidget.__init__(self,parent)
