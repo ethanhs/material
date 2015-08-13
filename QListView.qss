@@ -1,16 +1,18 @@
 QListView {
-    border: 0px solid transparent;
+    border: 2px solid red;
+    background-color: white;
+
 }
 
 QListView:item {
     padding: 2px;
-    border-left: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
 }
 QListView:item:hover,QListView:item:focus {
     padding: 4px;
     
 }
 QListView:item:selected {
-    background-color: #e91e63;
+    background-color: #dddddd;
 }
 

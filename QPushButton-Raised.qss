@@ -1,7 +1,8 @@
 QPushButton,QPushButton:hover,QPushButton:focus,QPushButton:hover:focus {
   border: none;
-  color: #111111;
+  color: white;
   background-color: %s;
+  border-radius: 3px;
 }
 
 
@@ -10,9 +11,11 @@ QPushButton:pressed:focus {
   border: none;
   color: white;
   background-color: %s;
+  border-radius: 3px;
 }
 
 QPushButton:disabled {
     border: none;
     background-color: #cccccc;
+    border-radius: 3px;
 }

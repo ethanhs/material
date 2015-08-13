@@ -23,7 +23,7 @@ QTabBar::tab:disabled {
 
 QTabBar::tab:selected {
   color: [color];
-  border-bottom: 4px solid [bottom];
+  border-bottom: 6px solid [bottom];
   background-color: [background];
   border-right: 6px solid [background];
   border-left:  6px solid [background];

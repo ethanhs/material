@@ -1,7 +1,7 @@
 QPushButton, QPushButton:focus, QPushButton:focus {
   background-color: %s;
   border: none;
-  color: #111111;
+  color: white;
   padding: 3px 20px;
 }
 
@@ -17,11 +17,12 @@ QPushButton:pressed,
 QPushButton:pressed:focus {
   background-color: #f50057;
   border: none;
-  color: black;
+  color: white;
 }
 
 QPushButton:disabled {
     color: #cccccc;
+    background-color: #cccccc
     border: none
     
 }

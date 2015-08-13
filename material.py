@@ -5,8 +5,26 @@ from PySide.QtCore import Qt
 from PySide.QtSvg import QSvgRenderer
 
 
+def svg2icon(path, img_type=QImage):
+    img = QImage(64, 64, QImage.Format_ARGB32)
+    svgrenderer = QSvgRenderer(path)
+    paint = QPainter(img)
+    paint.setRenderHint(QPainter.HighQualityAntialiasing)
+    paint.setRenderHint(QPainter.SmoothPixmapTransform)
+    paint.setBrush(QColor(255, 255, 255, 255))
+    paint.drawRect(QRect(-1, -1, 65, 65))
+    svgrenderer.render(paint)
+    paint.end()
+    if img_type == QImage:
+        return img
+    elif img_type == QPixmap:
+        pix = QPixmap
+        pix = pix.fromImage(img)
+        return pix
+
+
 class FloatingActionButton(QPushButton):
-    def __init__(self, color=QColor(243, 40, 109, 255), radius=50, icon="plus.png", parent=None, *args):
+    def __init__(self, color=QColor(243, 40, 109, 255), radius=50, icon="plus.png", parent=None):
         super(FloatingActionButton, self).__init__(parent)
         if icon:
             self.pixmap = QPixmap(icon)
@@ -50,13 +68,14 @@ class FloatingActionButton(QPushButton):
 
 class RaisedButton(QPushButton):
     """RaisedButton(str text, color, QSize size, QWidget parent=None"""
-    def __init__(self, text, color,size=QSize(80, 30), parent=None):
+
+    def __init__(self, text, color, size=QSize(80, 30), parent=None):
         super(RaisedButton, self).__init__(parent)
         self.resize(size)
-        if color==None:
-            color=QColor(66, 165, 245)
+        if color == None:
+            color = QColor(66, 165, 245)
         else:
-            color=QColor(color)
+            color = QColor(color)
         self.isFlat = True
         self.color = color
         self.setText(text)
@@ -90,7 +109,6 @@ class FlatButton(QPushButton):
         self.setObjectName("FlatButton")
         self.color = color
         self.setText(text)
-        self.press = False
         with open("QPushButton-Flat.qss") as f:
             dat = f.read()
             color1 = color.name()
@@ -100,6 +118,7 @@ class FlatButton(QPushButton):
 
 class Switch(QCheckBox):
     """Switch(color,diameter,QWidget parent"""
+
     def __init__(self, color, diameter, parent=None):
         QCheckBox.__init__(self, parent)
         self.color1 = QColor(color)
@@ -135,7 +154,7 @@ class Switch(QCheckBox):
             painter.setBrush(brush)
             painter.drawEllipse(self.width() - self.height(), 0, self.height(), self.height())
         else:
-            #gray fill
+            # gray fill
             brush = QBrush(self.color2)
             painter.setBrush(brush)
             painter.drawRoundedRect(1, 7, self.width() - 3, self.height() - 15, self.height() / 2 - 10,
@@ -146,15 +165,16 @@ class Switch(QCheckBox):
         painter.end()
 
     def lighter(self, color):
-        hexx=color.name()
+        hexx = color.name()
         hexx = hexx.strip("#")
         r = int(hexx[:2], 16)
         g = int(hexx[2:4], 16)
         b = int(hexx[4:6], 16)
-        r2 = hex(min(r + 20,255)).replace("0x", "")
-        g2 = hex(min(g + 20,255)).replace("0x", "")
-        b2 = hex(min(b + 20,255)).replace("0x", "")
+        r2 = hex(min(r + 20, 255)).replace("0x", "")
+        g2 = hex(min(g + 20, 255)).replace("0x", "")
+        b2 = hex(min(b + 20, 255)).replace("0x", "")
         return QColor("#" + r2 + g2 + b2)
+
 
 class TopBar(QWidget):
     def __init__(self, color, height, parent=None):
@@ -162,28 +182,39 @@ class TopBar(QWidget):
         if not parent:
             raise (Exception("You must specify a parent of this widget"))
         self.setObjectName("TopBar")
-        self.setStyleSheet("background-color: #305135")
-        self.height_resize(height)
+        if not color:
+            color = "#305135"
+        self._height = height
         self.color = color
+        self.setMinimumSize(self.window().width(), self._height)
 
-    def height_resize(self, height):
-        self.resize(self.parent().width(), height)
+    def paintEvent(self, event):
+        painter = QPainter()
+        painter.begin(self)
+        painter.setRenderHint(QPainter.HighQualityAntialiasing)
+        painter.setRenderHint(QPainter.Antialiasing)
+        painter.setRenderHint(QPainter.SmoothPixmapTransform)
+        painter.setBrush(QColor(self.color))
+        painter.drawRect(self.window().x() + 4, self.window().y() + 4, self.window().width(), self._height)
+        painter.end()
 
 
 class TabBar(QTabBar):
     def __init__(self, parent=None, *args):
         super(TabBar, self).__init__(parent)
-        # self.setTabButton()
+
         if len(args) == 1:
             color2 = args[0].name()
         else:
             color2 = "#4ca050"
         if isinstance(parent, TopBar):
-            color2 = self.lighter(self.lighter(parent.color))
-        if 125<QColor(color2).red() and 125<QColor(color2).green() and 125<QColor(color2).blue():
-            text="black"
+            color2 = parent.color
+        if 125 < QColor(color2).red() and 125 < QColor(color2).green() and 125 < QColor(color2).blue():
+            text = "black"
         else:
-            text="white"
+            text = "white"
+        for child in self.children():
+            child.setStyleSheet("background-color: %s" % color2)
         with open("QTabBar.qss") as f:
             data = f.read()
             while "[background]" in data:
@@ -191,14 +222,15 @@ class TabBar(QTabBar):
                 data = data[:ind] + color2 + str(data[ind + 12:])
             while "[bottom]" in data:
                 ind = data.find("[bottom]")
-                if color2=="#"+color2[1:3]*3:
-                    if text=="black":
-                        color="#3F51B5"
+                if color2 == "#" + color2[1:3] * 3:
+                    if text == "black":
+                        color = "#3F51B5"
                     else:
-                        color="#29b6f6"
+                        color = "#29b6f6"
+                elif text == "white":
+                    color = self.lighter(self.lighter(self.lighter(color2)))
                 else:
-                    print color2
-                    color=self.lighter(self.lighter(self.lighter(color2)))
+                    color = self.darker(self.darker(self.darker(color2)))
                 data = data[:ind] + color + str(data[ind + 8:])
             while "[hover]" in data:
                 ind = data.find("[hover]")
@@ -216,15 +248,15 @@ class TabBar(QTabBar):
         r = int(hexx[:2], 16)
         g = int(hexx[2:4], 16)
         b = int(hexx[4:6], 16)
-        r2 = hex(max(r - 20,0)).replace("0x", "")
-        g2 = hex(max(g - 20,0)).replace("0x", "")
-        b2 = hex(max(b - 20,0)).replace("0x", "")
-        if len(r2)==1:
-            r2="0"+r2
-        if len(g2)==1:
-            g2="0"+g2
-        if len(b2)==1:
-            b2="0"+b2
+        r2 = hex(max(r - 20, 0)).replace("0x", "")
+        g2 = hex(max(g - 20, 0)).replace("0x", "")
+        b2 = hex(max(b - 20, 0)).replace("0x", "")
+        if len(r2) == 1:
+            r2 = "0" + r2
+        if len(g2) == 1:
+            g2 = "0" + g2
+        if len(b2) == 1:
+            b2 = "0" + b2
         return "#" + r2 + g2 + b2
 
     def lighter(self, hexx):
@@ -232,17 +264,16 @@ class TabBar(QTabBar):
         r = int(hexx[:2], 16)
         g = int(hexx[2:4], 16)
         b = int(hexx[4:6], 16)
-        r2 = hex(min(r + 20,255)).replace("0x", "")
-        g2 = hex(min(g + 20,255)).replace("0x", "")
-        b2 = hex(min(b + 20,255)).replace("0x", "")
+        r2 = hex(min(r + 20, 255)).replace("0x", "")
+        g2 = hex(min(g + 20, 255)).replace("0x", "")
+        b2 = hex(min(b + 20, 255)).replace("0x", "")
         return "#" + r2 + g2 + b2
 
 
 class Slider(QSlider):
-    def __init__(self, parent=None):
-        super(Slider, self).__init__(parent)
-        with open("QSlider.qss") as f:
-            self.setStyleSheet(f.read())
+    def __init__(self,color, parent=None):
+        QSlider.__init__(self,parent)
+        raise NotImplemented("This is not yet implemented. You can make it yourself, and make a  pull request.")
 
 
 class CheckBox(QCheckBox):
@@ -269,12 +300,12 @@ class CheckBox(QCheckBox):
         painter = QPainter()
         painter.begin(self)
         painter.setRenderHint(QPainter.HighQualityAntialiasing)
+        painter.setRenderHint(QPainter.Antialiasing)
         painter.setRenderHint(QPainter.SmoothPixmapTransform)
-
         self.img = QPixmap()
         if self.isChecked():
             painter.setBrush(self.color1)
-            painter.drawRect(QRect(-1, -1, 31, 31))
+            painter.drawRoundedRect(QRect(-1, -1, 31, 31), 7, 7)
             painter.drawPixmap(QRect(-2, -5, 35, 40), self.img.fromImage(self.check))
         else:
             pen = QPen()
@@ -306,22 +337,73 @@ class ProgressBar(QProgressBar):
 
 class Hamburger(QPushButton):
     def __init__(self, parent=None):
+        self.hamburger = QImage(128, 128, QImage.Format_ARGB32)
         QPushButton.__init__(self, parent)
-        self.svgrenderer=QSvgRenderer("icons/hamburger.svg")
-        paint = QPainter(self.check)
+        self.svgrenderer = QSvgRenderer("icons\\hamburger.svg")
+        paint = QPainter(self.hamburger)
+        paint.setRenderHint(QPainter.HighQualityAntialiasing)
+        paint.setRenderHint(QPainter.SmoothPixmapTransform)
         self.svgrenderer.render(paint)
         paint.end()
+        pixmap = QPixmap()
+        self.setIcon(QIcon(pixmap.fromImage(self.hamburger)))
+        self.setStyleSheet("QPushButton, QPushButton:pressed{background-color: rgba(0,0,0,0)}")
+
 
 class LineEdit(QLineEdit):
-    def __init__(self,parent=None):
-        QLineEdit.__init__(self,parent)
+    def __init__(self, parent=None):
+        QLineEdit.__init__(self, parent)
         with open("QLineEdit.qss") as f:
             self.setStyleSheet(f.read())
 
     def wrong(self):
-        self.setStyleSheet("QLineEdit{border: none;padding-bottom: 2px;border-bottom: 2px solid #ff1744;color: #111111;font-size: 20px;}")
+        self.setStyleSheet(
+            "QLineEdit{border: none; background-color:rgba(0,0,0,0);padding-bottom: 2px;border-bottom: 2px solid #ff1744;color: #111111;font-size: 20px;}")
+
+
 class Page(QWidget):
-    def __init__(self,parent=None):
-        QWidget.__init__(self,parent)
+    def __init__(self, parent=None):
+        QWidget.__init__(self, parent)
         self.setStyleSheet("background-color:#efefef")
 
+
+class ListView(QScrollArea):
+    def __init__(self, parent=None):
+        QScrollArea.__init__(self, parent)
+        self.setStyleSheet("background-color: transparent")
+
+
+class ListItem(QWidget):
+    def __init__(self, icon=None, title=None, text=None, parent=None):
+        QWidget.__init__(self, parent)
+        self.setMouseTracking(True)
+        self.title = title
+        self.icon = icon
+        self.text = text
+        self.setStyleSheet("background-color: rgba(0,0,0,0)")
+        self.press = None
+
+    def paintEvent(self, event):
+        painter = QPainter()
+        painter.begin(self)
+        painter.setRenderHint(QPainter.HighQualityAntialiasing)
+        painter.setRenderHint(QPainter.SmoothPixmapTransform)
+        painter.setBrush(QColor(255, 255, 255))
+        painter.drawRect(QRect(0, -1, self.window().width(), 76))
+        if self.icon:
+            painter.drawPixmap(QRect(16, 16, 32, 32), self.icon)
+        if self.title:
+            painter.setFont(QFont("Roboto\\Roboto-Regular.ttf", 20))
+            painter.drawText(QRect(56, 0, 64, 48), self.title)
+        if self.text:
+            painter.setFont(QFont("Roboto\\Roboto-Regular.ttf", 13))
+            painter.drawText(QRect(56, self.height() / 2, self.window().width() - 56, 36), self.text)
+        painter.end()
+
+
+class Text(QLabel):
+    def __init__(self, text, weight="Regular", size=12, parent=None):
+        QLabel.__init__(self, parent)
+        self.setFont(QFont("Roboto\\Roboto-" + weight + ".ttf", size))
+        self.setText(text)
+        self.setStyleSheet("background-color: rgba(0,0,0,0)")
