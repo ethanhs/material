@@ -1,5 +1,5 @@
-# Material PyQt
-A collection of PyQt Widgets for theming applications to give a material design look.
+# Material PySide
+A collection of PySide Widgets for theming applications to give a material design look.
 
 Currently, only PySide (and probably PyQt4) and Python2 are supported.
 
