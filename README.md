@@ -1,7 +1,7 @@
 # Material PySide
 A collection of PySide Widgets for theming applications to give a material design look.
 
-Currently, only PySide (and probably PyQt4) and Python2 are supported.
+Currently, only PySide and Python2 are working. Python3 will be tested soon.
 
 This is a repository for Material Design qt stylesheets and widgets. Currently, the following widgets are supported (not all implemented right now):
 
