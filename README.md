@@ -30,7 +30,7 @@ First page with list view:
 
 and seccond page
 
-![second page](http://i.imgur.com/yTsnZpE.pgn)
+![second page](http://i.imgur.com/yTsnZpE.png)
 
 #Contributing
 
