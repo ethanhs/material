@@ -1,4 +1,6 @@
 # Material PySide
+
+[![Join the chat at https://gitter.im/IronManMark20/Material](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/IronManMark20/Material?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A collection of PySide Widgets for theming applications to give a material design look.
 
 Currently, only PySide and Python2 are working. Python3 will be tested soon.
