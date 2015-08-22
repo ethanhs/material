@@ -1,28 +1,31 @@
 # Material PySide
 
 [![Join the chat at https://gitter.im/IronManMark20/Material](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/IronManMark20/Material?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+^^ I am often on Gitter so you will find me there.
+
+
 A collection of PySide Widgets for theming applications to give a material design look.
 
-Currently, only PySide and Python2 are working. Python3 will be tested soon.
+Currently, only PySide for Qt4 is working. Python 2.7 and 3.x works!
 
 This is a repository for Material Design qt stylesheets and widgets. Currently, the following widgets are supported (not all implemented right now):
 
-- Slider -  not implemented (vertical and horizontal)
 - LineEdit - implemented
-- TextEdit - not implemented
+- TextEdit - not implemented (v0.2)
 - PushButton - FAB, Raised and Flat
 - TabBar - implemented
 - ListView - implemented
 - ProgressBar - implemented
 - Checkbox - implemented
 - TopBar - implemented
-- Dialog - not implemented
+- Dialog - not implemented (v0.2)
 
 QPushButton has 3 styles: Flat, Raised, and Floating Action. To read more on these styles [read the button spec](http://www.google.com/design/spec/components/buttons.html).
 
 Also, I have added a custom Text class which uses Roboto font as a bonus.
 
-This is still a work in progress to a degree, especially the parts that aren't done (duh). To see the example, run the `example.py` file. It will give you an example application.
+To see the example, run the `example.py` file. It will give you an example application.
 
 
 #Screenshots
@@ -36,7 +39,10 @@ and seccond page
 
 #Contributing
 
-I take pull requests! Let me know if you are interested in contributing.
+I take pull requests! Let me know if you are interested in contributing. The best way would be to open a new issue with the widget or fix you are going to work on. Fork the project, and push commits to that. Then, when you are done, you can make a pull request. I will check the changes you made and either approve it, or explain how it can be fixed. 
+
+###Note:
+By making a pull request, you agree that the code you are commiting is released under the LGPL.
 
 #License
 
