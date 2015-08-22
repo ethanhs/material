@@ -347,7 +347,7 @@ class Hamburger(QPushButton):
         paint.end()
         pixmap = QPixmap()
         self.setIcon(QIcon(pixmap.fromImage(self.hamburger)))
-        self.setStyleSheet("QPushButton, QPushButton:pressed{background-color: rgba(0,0,0,0)}")
+        self.setStyleSheet("QPushButton, QPushButton:pressed{background-color: rgba(0,0,0,0)} QPushButton:hover {background-color: rgba(255,255,255,100); border-radius: 32px} ")
 
 
 class LineEdit(QLineEdit):
@@ -407,3 +407,4 @@ class Text(QLabel):
         self.setFont(QFont("Roboto\\Roboto-" + weight + ".ttf", size))
         self.setText(text)
         self.setStyleSheet("background-color: rgba(0,0,0,0)")
+        self.setWordWrap(True)
