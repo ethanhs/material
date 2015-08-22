@@ -58,7 +58,7 @@ class Page_2(Page):
 class Page_3(Page):
     def __init__(self,parent=None):
         Page.__init__(self,parent)
-
+        self.text=Text("This is an example app that demonstrates some of the Widgets provided by the material library.",parent=self)
 
 class Example_App(QMainWindow):
     def __init__(self):
