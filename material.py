@@ -1,10 +1,11 @@
 import time
 from PySide.QtCore import QRect, QSize, QPoint, QObject, SIGNAL
-from PySide.QtGui import *
+from PySide.QtGui import QImage, QWidget, QPainter, QColor, QPixmap, QGraphicsDropShadowEffect, QPushButton, QBrush, QTabBar, QCheckBox, QPen, QProgressBar, QFont, QLabel, QScrollArea, QLineEdit, QSlider, QMainWindow, QIcon, QTabWidget
 from PySide.QtCore import Qt
 from PySide.QtSvg import QSvgRenderer
 from PySide import QtCore
 
+warning=False
 
 def qt_ver():
     if "PySide" in QtCore.__file__:
@@ -13,6 +14,11 @@ def qt_ver():
         return "PyQt4"
     elif "PyQt5" in QtCore.__file__:
         return "PyQt5"
+    else:
+        if warning:
+            raise Exception("This version of Qt and Python are not supported. Please file an issue at https://github.com/IronManMark20/Material")
+        else:
+            print("WARNING: This version of Qt and Python are not supported. Please file an issue at https://github.com/IronManMark20/Material")
 
 def svg2icon(path, img_type=QImage):
     img = QImage(64, 64, QImage.Format_ARGB32)
