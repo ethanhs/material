@@ -25,9 +25,15 @@ QPushButton has 3 styles: Flat, Raised, and Floating Action. To read more on the
 
 Also, I have added a custom Text class which uses Roboto font as a bonus.
 
+#Install
+
+simple! run `git clone https://github.com/IronManMark20/material.git && cd material`
+
+
+##Example
 To see the example, run the `example.py` file. It will give you an example application.
 
-Also, the wiki will have documentation for each widget. To start though, you can read through the source of `example.py` for examples.
+Also, the wiki will (in the future) have documentation for each widget. To start though, you can read through the source of `example.py` for examples.
 
 
 #Screenshots
