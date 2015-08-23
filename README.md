@@ -9,7 +9,7 @@ A collection of PySide Widgets for theming applications to give a material desig
 
 Currently, only PySide for Qt4 is working. Python 2.7 and 3.x works!
 
-This is a repository for Material Design qt stylesheets and widgets. Currently, the following widgets are supported (not all implemented right now):
+Currently, the following widgets are supported (not all implemented right now):
 
 - LineEdit - implemented
 - TextEdit - not implemented (v0.2)
@@ -26,6 +26,8 @@ QPushButton has 3 styles: Flat, Raised, and Floating Action. To read more on the
 Also, I have added a custom Text class which uses Roboto font as a bonus.
 
 To see the example, run the `example.py` file. It will give you an example application.
+
+Also, the wiki will have documentation for each widget. To start though, you can read through the source of `example.py` for examples.
 
 
 #Screenshots
