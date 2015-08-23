@@ -7,8 +7,6 @@ class Page_1(Page):
     def __init__(self,parent=None):
         Page.__init__(self,parent)
         person=svg2icon("icons\\person.svg",img_type=QPixmap)
-        '''self.list=ListView(self)
-        '''
         names=["Will","Jane","Alex","Sara","Peter","Maria"]
         messages=["Hello","How are you?","What's up?","About the app...","Out of the office","Material Design rocks!"]
         self.list=QWidget(self)

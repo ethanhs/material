@@ -1,9 +1,18 @@
 import time
-from PySide.QtCore import *
+from PySide.QtCore import QRect, QSize, QPoint, QObject, SIGNAL
 from PySide.QtGui import *
 from PySide.QtCore import Qt
 from PySide.QtSvg import QSvgRenderer
+from PySide import QtCore
 
+
+def qt_ver():
+    if "PySide" in QtCore.__file__:
+        return "PySide"
+    elif "PyQt4" in QtCore.__file__:
+        return "PyQt4"
+    elif "PyQt5" in QtCore.__file__:
+        return "PyQt5"
 
 def svg2icon(path, img_type=QImage):
     img = QImage(64, 64, QImage.Format_ARGB32)
@@ -166,6 +175,7 @@ class Switch(QCheckBox):
 
     def lighter(self, color):
         hexx = color.name()
+        hexx=str(hexx)
         hexx = hexx.strip("#")
         r = int(hexx[:2], 16)
         g = int(hexx[2:4], 16)
@@ -244,6 +254,7 @@ class TabBar(QTabBar):
             self.setStyleSheet(data)
 
     def darker(self, hexx):
+        
         hexx = hexx.strip("#")
         r = int(hexx[:2], 16)
         g = int(hexx[2:4], 16)
@@ -260,6 +271,7 @@ class TabBar(QTabBar):
         return "#" + r2 + g2 + b2
 
     def lighter(self, hexx):
+        hexx=str(hexx)
         hexx = hexx.strip("#")
         r = int(hexx[:2], 16)
         g = int(hexx[2:4], 16)
@@ -394,10 +406,14 @@ class ListItem(QWidget):
             painter.drawPixmap(QRect(16, 16, 32, 32), self.icon)
         if self.title:
             painter.setFont(QFont("Roboto\\Roboto-Regular.ttf", 20))
-            painter.drawText(QRect(56, 0, 64, 48), self.title)
+            if qt_ver() != "PySide":
+                painter.drawText(QRect(56, 0, 64, 48),0, self.title)
+            else:
+                painter.drawText(QRect(56, 0, 64, 48), self.title)
         if self.text:
             painter.setFont(QFont("Roboto\\Roboto-Regular.ttf", 13))
-            painter.drawText(QRect(56, self.height() / 2, self.window().width() - 56, 36), self.text)
+            if qt_ver() != "PySide":
+                painter.drawText(QRect(56, self.height() / 2, self.window().width() - 56, 36),0, self.text)
         painter.end()
 
 
