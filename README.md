@@ -4,6 +4,7 @@
 
 ^^ I am often on Gitter so you will find me there.
 
+#NO LONGER SUPPORTED, but feel free to ask questions on the gitter. I might answer them.
 
 A collection of PySide Widgets for theming applications to give a material design look.
 
