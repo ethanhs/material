@@ -1,6 +1,6 @@
 import time
-from PySide.QtCore import QRect, QSize, QPoint, QObject, SIGNAL
-from PySide.QtGui import QImage, QWidget, QPainter, QColor, QPixmap, QGraphicsDropShadowEffect, QPushButton, QBrush, QTabBar, QCheckBox, QPen, QProgressBar, QFont, QLabel, QScrollArea, QLineEdit, QSlider, QMainWindow, QIcon, QTabWidget
+from PySide.QtCore import QRect, QSize, QPoint, SIGNAL
+from PySide.QtGui import QImage, QWidget, QPainter, QColor, QPixmap, QGraphicsDropShadowEffect, QPushButton, QBrush, QTabBar, QCheckBox, QPen, QProgressBar, QFont, QLabel, QScrollArea, QLineEdit, QSlider, QMainWindow, QIcon
 from PySide.QtCore import Qt
 from PySide.QtSvg import QSvgRenderer
 from PySide import QtCore
@@ -300,7 +300,7 @@ class CheckBox(QCheckBox):
         self.setMouseTracking(True)
         if tuple() in [type(i) for i in args]:
             for arg in args:
-                if type(arg) == tuple():
+                if isinstance(arg) == tuple():
                     color = arg
         else:
             color = (QColor(0, 150, 136), QColor(255, 255, 255))
