@@ -291,7 +291,7 @@ class TabBar(QTabBar):
 class Slider(QSlider):
     def __init__(self,color, parent=None):
         QSlider.__init__(self,parent)
-        raise NotImplemented("This is not yet implemented. You can make it yourself, and make a  pull request.")
+        raise NotImplementedError("This is not yet implemented. You can make it yourself, and make a  pull request.")
 
 
 class CheckBox(QCheckBox):
